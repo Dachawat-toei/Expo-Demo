@@ -4,6 +4,9 @@ import HomeScreen from 'screens/HomeScreen'
 import SettingsScreen from 'screens/SettingsScreen'
 import { useLocalization } from 'contexts/LocalizationContext'
 
+
+
+
 export type TabParamList = {
   Home: undefined
   Settings: undefined
@@ -29,6 +32,7 @@ const MainTab = (): JSX.Element => {
         options={{
           title: t('screens.SettingsScreen.title', {
             defaultValue: 'Settings',
+            
           }),
         }}
       />

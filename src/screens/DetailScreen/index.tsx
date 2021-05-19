@@ -7,7 +7,7 @@ const DetailScreen = (): JSX.Element => {
   return (
     <Container>
       <Content>
-        <Text>DetailScreen</Text>
+        <Text>Toey</Text>
       </Content>
     </Container>
   )
