@@ -10,19 +10,11 @@ export type Props = {
 }
 
 const HomeScreen = ({ navigation }: Props): JSX.Element => {
-  const {
-    authContext: { logout },
-  } = useAuth()
+  
   return (
     <Container>
       <Content>
-        <Text>HomeScreen</Text>
-        <Button
-          testID="see-detail"
-          title="See Detail"
-          onPress={() => navigation.navigate('Details')}
-        />
-        <Button testID="logout" title="Logout" onPress={() => logout()} />
+        <Button testID="see-detail" title="Drawer" onPress={() => navigation.toggleDrawer()}/>
       </Content>
     </Container>
   )

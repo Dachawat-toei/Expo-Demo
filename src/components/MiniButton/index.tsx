@@ -1,9 +1,10 @@
 import React from 'react'
 import styled from '@emotion/native'
 import Text from 'components/Text'
+import { AntDesign } from '@expo/vector-icons';
 
 export type TouchableProps = {
-  color?: 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger'|'dark'
+  color?: 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'danger'| 'dark'
   outline?: boolean
   block?: boolean
   disabled?: boolean
@@ -12,24 +13,22 @@ export type TouchableProps = {
 export type Props = {
   testID: string
   title: string
+  
   onPress: () => void
 } & TouchableProps
 
 const Touchable = styled.TouchableOpacity<TouchableProps>`
   background-color: ${(props) => props.theme.color[props.color || 'dark']};
+  margin-top: 6px;
   padding: 10px;
-  margin: 10px;
-  border-radius: 500px;
+  border-radius: 8px;
   align-items: center;
 `
 const ButtonText = styled(Text)`
   color: white;
-  margin:10px;
-  align-items: center;
-  ;
 `
 
-const Button = ({
+const MiniButton = ({
   testID,
   title,
   onPress,
@@ -47,9 +46,10 @@ const Button = ({
       block={block}
       disabled={disabled}
     >
+      <AntDesign name="like2" size={24} color="white" />
       <ButtonText bold>{title}</ButtonText>
     </Touchable>
   )
 }
 
-export default Button
+export default MiniButton

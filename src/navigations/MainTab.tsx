@@ -1,12 +1,17 @@
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import HomeScreen from 'screens/HomeScreen'
-import SettingsScreen from 'screens/SettingsScreen'
+import TravelScreen from 'screens/TravelScreen'
 import { useLocalization } from 'contexts/LocalizationContext'
+import GalleryScreen from 'screens/GalleryScreen'
+import { Ionicons } from '@expo/vector-icons';
+import AppLoading from 'expo-app-loading'; 
 
 export type TabParamList = {
   Home: undefined
-  Settings: undefined
+  Travel: undefined
+
+
 }
 
 const Tab = createBottomTabNavigator<TabParamList>()
@@ -15,7 +20,28 @@ const MainTab = (): JSX.Element => {
   const { t } = useLocalization()
 
   return (
-    <Tab.Navigator>
+    <Tab.Navigator 
+    screenOptions={({ route }) => ({
+      tabBarIcon: ({ focused, color, size }) => {
+        let iconName;
+
+        if (route.name === 'Home') {
+            iconName = focused
+            iconName = 'ios-home-outline';
+        } else if (route.name === 'Travel') {
+            iconName = 'ios-airplane-outline';
+        }
+
+        // You can return any component that you like here!
+        return <Ionicons name={iconName} size={size} color={color} />;
+      },
+    })}
+    tabBarOptions={{
+      activeTintColor: 'tomato',
+      inactiveTintColor: 'gray',
+    }}
+    
+    >
       <Tab.Screen
         name="Home"
         component={HomeScreen}
@@ -24,12 +50,10 @@ const MainTab = (): JSX.Element => {
         }}
       />
       <Tab.Screen
-        name="Settings"
-        component={SettingsScreen}
+        name="Travel" 
+        component={TravelScreen}
         options={{
-          title: t('screens.SettingsScreen.title', {
-            defaultValue: 'Settings',
-          }),
+          title: t('screens.TravelScreen.title', {defaultValue: 'Travel', }),
         }}
       />
     </Tab.Navigator>

@@ -5,6 +5,7 @@ import { useAuth } from 'contexts/AuthContext'
 import Container from 'components/Container'
 import Content from 'components/Content'
 import Text from 'components/Text'
+import { AntDesign } from '@expo/vector-icons';
 import { Form, Input, SubmitButton } from 'components/Form'
 
 const defaultValues = {
@@ -44,6 +45,7 @@ const LoginScreen = (): JSX.Element => {
             name="email"
             placeholder={t('screens.LoginScreen.form.email')}
             keyboardType="email-address"
+            
           />
           <Input
             testID="login.input.password"
